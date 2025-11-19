@@ -13,7 +13,7 @@ from typing import Literal
 from pymatgen.entries.compatibility import MaterialsProject2020Compatibility
 from pymatgen.entries.computed_entries import ComputedStructureEntry
 from pymatgen.io.ase import AseAtomsAdaptor
-from pymatgen.io.vasp.sets import MPRelaxSet, VaspInputSet
+from pymatgen.io.vasp.sets import MPRelaxSet, DictSet
 
 from pymatgen.io.vasp.inputs import PmgVaspPspDirError
 
@@ -104,7 +104,7 @@ class OMat24Compatibility(MaterialsProject2020Compatibility):
         return super().__new__(cls, *args, **kwargs)
 
 
-def generate_cse_parameters(input_set: VaspInputSet) -> dict:
+def generate_cse_parameters(input_set: DictSet) -> dict:
     """Generate parameters for a ComputedStructureEntry from a VASP input set in order"""
 
     parameters = {"hubbards": {}}
