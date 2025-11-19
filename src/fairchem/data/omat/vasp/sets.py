@@ -12,13 +12,13 @@ from dataclasses import dataclass
 from typing import Any, Literal
 
 from pymatgen.io.vasp import Kpoints, sets
-from pymatgen.io.vasp.sets import VaspInputSet
+from pymatgen.io.vasp.sets import DictSet
 
 sets.MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 @dataclass
-class OMat24StaticSet(VaspInputSet):
+class OMat24StaticSet(DictSet):
     """Create input files for a OMat24 PBE static calculation.
     The default POTCAR versions used are PBE_54
 
@@ -26,7 +26,7 @@ class OMat24StaticSet(VaspInputSet):
         structure (Structure): The Structure to create inputs for. If None, the input
             set is initialized without a Structure but one must be set separately before
             the inputs are generated.
-        **kwargs: Keywords supported by VaspInputSet.
+        **kwargs: Keywords supported by DictSet.
     """
 
     CONFIG = sets._load_yaml_config("OMat24StaticSet")
@@ -40,7 +40,7 @@ class OMat24RelaxSet(OMat24StaticSet):
         structure (Structure): The Structure to create inputs for. If None, the input
             set is initialized without a Structure but one must be set separately before
             the inputs are generated.
-        **kwargs: Keywords supported by VaspInputSet.
+        **kwargs: Keywords supported by DictSet.
     """
 
     @property
@@ -54,7 +54,7 @@ class OMat24RelaxSet(OMat24StaticSet):
 
 
 @dataclass
-class OMat24AIMDSet(VaspInputSet):
+class OMat24AIMDSet(DictSet):
     """Create input files for a OMat24 PBE static calculation.
     The default POTCAR versions used are PBE_54
 
@@ -62,7 +62,7 @@ class OMat24AIMDSet(VaspInputSet):
         structure (Structure): The Structure to create inputs for. If None, the input
             set is initialized without a Structure but one must be set separately before
             the inputs are generated.
-        **kwargs: Keywords supported by VaspInputSet.
+        **kwargs: Keywords supported by DictSet.
     """
 
     start_temperature: float = 1000
